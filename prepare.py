@@ -7,19 +7,24 @@ def prep_telco(df):
     # Drop unnecessary foreign key ids
     df = df.drop(columns=['payment_type_id','internet_service_type_id','contract_type_id'])
     # From prior exploration of dataset a small number of the total_charges are just whitespace - these are all new customers who haven't been with the company for >1 month.
+    
     # Given that it is a very small proportion of the total dataset these rows will be deleted for ease of computation later on
     df = df.drop(df[df.total_charges == " "].index)
     # Convert total_charges to float for later analysis
     df.total_charges = df.total_charges.astype('float64')
 
-    # Determine the categorical variables - here defined as object data type (non-numeric) and with fewer than 5 values
-    catcol = df.columns[(df.nunique()<5)&(df.dtypes == 'object')]
-    # Encode categoricals
-    dummy_df = pd.get_dummies(df[catcol], dummy_na=False, drop_first=True)
-    # Concatenate dummy df to original df
-    df = pd.concat([df,dummy_df],axis=1)
+    df = df.rename(columns={'senior_citizen':'is_senior_citizen'})
+    df.churn = df.churn.map({'Yes':1,'No':0})
+    df['is_male'] = df.gender.map({'Male':1,'Female':0})
+    df['has_phone'] = df.phone_service.map({'Yes':1,'No':0})
+    df['has_internet_service'] = df.internet_service_type.map({'Fiber optic':1,'DSL':1,'None':0})
+    df['has_partner']= df.partner.map({'Yes':1,'No':0})
+    df['has_dependent'] = df.dependents.map({'Yes':1,'No':0})
+    df['is_paperless'] = df.paperless_billing.map({'Yes':1,'No':0})
+    df['is_month_to_month'] = df.contract_type.map({'Two year':0,'One year':0, 'Month-to-month':1})
+    df['is_autopay'] = df.payment_type.map({'Electronic check': 0, 'Mailed check': 0, 'Bank transfer (automatic)':1, 'Credit card (automatic)': 1})
     # Remove the original categorical columns after encoding
-    df = df.drop(columns=catcol)
+    df = df.drop(columns=['gender','phone_service','dependents','partner'])
     
     return df
 
