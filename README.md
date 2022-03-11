@@ -30,8 +30,14 @@ The goal of this project is to identify drivers of customer churn at Telco. I wi
 
 | Variable    | Meaning     |
 | ----------- | ----------- |
-| has_streaming    |  whether the customer has either streaming TV or Movies or both           |
-|             |             |
+| customer_id    |  unique id identifying customer          |
+| is_senior_citizen           |  1 if the customer is a senior citizen           |
+| tenure    |  number of months customer has been with Telco      |
+| multiple_lines           |  whether the customer has multiple phone lines - Yes, No, or No Phone Service|
+| online_security    |  whether the customer has online security option         |
+| is_senior_citizen           |  1 if the customer is a senior citizen           || customer_id    |  unique id identifying customer          |
+| is_senior_citizen           |  1 if the customer is a senior citizen           || customer_id    |  unique id identifying customer          |
+| is_senior_citizen           |  1 if the customer is a senior citizen           |
 
 ### Project Plan
 
