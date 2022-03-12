@@ -27,7 +27,7 @@ def prep_telco(df):
     df['has_streaming'] = ((df.streaming_movies == 'Yes')|(df.streaming_tv == 'Yes'))
     
     # Remove unnecessary columns after encoding
-    df = df.drop(columns=['gender','phone_service','dependents','partner'])
+    df = df.drop(columns=['gender','phone_service','dependents','partner','paperless_billing])
     
     return df
 
