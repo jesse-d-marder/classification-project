@@ -77,7 +77,7 @@ Delivery: This is in the form of this github repository as well as a presentatio
 
 ### Steps to Reproduce
 
-1. You will need an env.pu file that contains the hostname, username and password of the mySQL database that contains the telco_churn table. Store that env file locally in the repository. 
+1. You will need an env.py file that contains the hostname, username and password of the mySQL database that contains the telco_churn table. Store that env file locally in the repository. 
 2. Clone my repository (including the acquire.py and prepare.py). Confirm .gitignore is hiding your env.py file/
 3. Libaries used are pandas, matplotlib, scipy, sklearn, seaborn, and numpy.
 4. You should be able to run churn_report.ipynb.
