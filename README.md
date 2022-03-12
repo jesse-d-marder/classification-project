@@ -9,14 +9,14 @@
     - Instructions for reproducing this project and findings
     - Key findings, recommendations and takeaways from project
 ### 2. Final report (Jupyter Notebook)
-### 3. Acquire module
-### 4. Prepare module
-### 5. Predictions .csv
-### 6. Exploration & modeling notebook
+### 3. Acquire module (acquire.py)
+### 4. Prepare module (prepare.py)
+### 5. predictions.csv
+### 6. Exploration & modeling notebook (model_testing.ipynb, explore.ipynb)
 
 ### Project Goals
 
-The goal of this project is to identify drivers of customer churn at Telco. I will try to answer the question of why customers churn and provide recommendations for reducing customer churn.
+The goal of this project was to identify drivers of customer churn at Telco. I used statistic testing and machine learning models to provide insight into why customers churn and to provide recommendations for reducing customer churn.
 
 ### Initial Questions and Hypotheses
 
