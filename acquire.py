@@ -18,7 +18,8 @@ def get_telco_data():
         USING (internet_service_type_id)
         JOIN payment_types
         USING (payment_type_id)'''
-        
+    
+    # Queries the SQL Database
     df = pd.read_sql(query,get_db_url('telco_churn'))
     df.to_csv(filename, index=False)
     return df

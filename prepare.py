@@ -35,9 +35,9 @@ def train_validate_test_split(df, target, seed=123):
     '''
     Cleanly splits data into train, validate, and test sets.
     Takes as arguments:
-    dataframe, the name of the target variable, and an integer for setting a seed
-    Test is 20% of the original dataset, validate is .30*.80= 24% of the 
-    original dataset, and train is .70*.80= 56% of the original dataset. 
+    dataframe, the name of the target variable, and an integer for setting a random seed.
+    Test is set to 20% of the original dataset, validate is 24% of the 
+    original dataset, and train is set to 56% of the original dataset. 
     The function returns, in this order, train, validate and test dataframes. 
     '''
     train_validate, test = train_test_split(df, test_size=0.2, 

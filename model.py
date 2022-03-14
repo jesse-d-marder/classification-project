@@ -8,11 +8,15 @@ def decision_tree_train(X_train, y_train, selected_features, target, d = 10, m=1
     """Fits a Decision Tree Classifier to train data and outputs the classification report and the classifier (clf) object.
     Takes in as arguments the split train data, a list of selected features, a string of the target name, a max_depth value (d), and min_sample_leaf value (m)
     """
-  
+    
+    # Train model
     clf = DecisionTreeClassifier(max_depth=d, min_samples_leaf = m, random_state=123)
+    # Fit model
     clf = clf.fit(X_train, y_train)
     accuracy = clf.score(X_train, y_train)
+    # Predict
     y_pred = clf.predict(X_train)
+    # Get Results
     class_report = classification_report(y_train, y_pred,output_dict=True)
     
     tn, fp, fn, tp = confusion_matrix(y_train, y_pred).ravel()
@@ -51,7 +55,7 @@ def decision_tree_train(X_train, y_train, selected_features, target, d = 10, m=1
 
 def classifier_validate(X_validate, y_validate, clf, print_results=True):
     """ Evaluates decision tree and random forest classifier models on validate (test) data. Takes as arguments the split validate data as well as the classifier object (clf) generated in the train function. Outputs the classification report with the results."""
-    # d = clf.max_depth
+    
     accuracy = clf.score(X_validate, y_validate)
     # Produce y_predictions that come from the X_validate
     y_pred = clf.predict(X_validate)
@@ -87,11 +91,14 @@ def classifier_validate(X_validate, y_validate, clf, print_results=True):
 def random_forest_train(X_train, y_train, selected_features, target, d = 10, m=1, print_results = True):
     """ Fits a Random Forest Classifier to train data and outputs the classification report and the classifier (clf) object.
     Takes in as arguments the split train data, a list of selected features, a string of the target name, a max_depth value (d), and min_sample_leaf value (m) """
-  
+    
+    # Fit Random Forest model
     clf = RandomForestClassifier(max_depth=d, min_samples_leaf = m, random_state=123)
     clf = clf.fit(X_train, y_train)
     accuracy = clf.score(X_train, y_train)
+    # Predict
     y_pred = clf.predict(X_train)
+    # Results
     class_report = classification_report(y_train, y_pred,output_dict=True)
     
     tn, fp, fn, tp = confusion_matrix(y_train, y_pred).ravel()
@@ -131,9 +138,11 @@ def knn_train(X_train, y_train, selected_features, target, k=1, print_results = 
     """Fits a K Nearest Neighbor Classifier to train data and outputs the classification report and the classifier (clf) object.
     Takes in as arguments the split train data, a list of selected features, a string of the target name, and a k value.
     """
+    # Fit K Nearest Neighbors model
     clf = KNeighborsClassifier(n_neighbors=k)
     clf = clf.fit(X_train, y_train)
     accuracy = clf.score(X_train, y_train)
+    # Make predictions
     y_pred = clf.predict(X_train)
     class_report = classification_report(y_train, y_pred,output_dict=True)
     
@@ -206,10 +215,11 @@ def knn_validate(X_validate, y_validate, clf, print_results=True):
 def logistic_regression_train(X_train, y_train, selected_features, target, c=1, print_results = True):
     """Fits a Logistic Regression Classifier to train data and outputs the classification report and the classifier (clf) object. Takes in as arguments the split train data, a list of selected features, a string of the target name, and a C value.
     """
-  
+    # Fit Logistic Regression model
     clf = LogisticRegression(C=c)
     clf = clf.fit(X_train, y_train)
     accuracy = clf.score(X_train, y_train)
+    # Make Predictions
     y_pred = clf.predict(X_train)
     class_report = classification_report(y_train, y_pred,output_dict=True)
     
@@ -282,6 +292,7 @@ def consolidate_results(train_results_df, validate_results_df, join_on):
     """ Consolidates the results of fitting the models on the train dataset and testing on the validate (or test) set. Takes as arguments the classification report and relevant metrics for both the train and validate (test) sets, as well as the parameter(s) to merge the two results on (usually the hyperparameters tested) in the form of a list. Calculates the difference in performance between train and validate and outputs a dataframe of the combined results to allow for easy plotting with Seaborn."""
     
     combined_df = train_results_df.merge(validate_results_df,on=join_on, suffixes=['_train','_validate'])
+    # Calculate difference in accuracy between train and validate sets
     combined_df["accuracy_diff"] = combined_df.accuracy_validate-combined_df.accuracy_train
     combined_df["precision_diff"] = combined_df.precision_validate-combined_df.precision_train
     combined_df["recall_diff"] = combined_df.recall_validate-combined_df.recall_train
