@@ -8,11 +8,11 @@
     - Project planning
     - Instructions for reproducing this project and findings
     - Key findings and recommendations for this project
-### 2. Final report (Jupyter Notebook)
+### 2. Final report (churn_report.ipynb)
 ### 3. Acquire module (acquire.py)
 ### 4. Prepare module (prepare.py)
 ### 5. predictions.csv
-### 6. Exploration & modeling notebook (model_testing.ipynb, explore.ipynb)
+### 6. Exploration & modeling notebooks (model_testing.ipynb, explore.ipynb)
 ### 7. Functions to support modeling work (model.py)
 
 ### Project Goals
@@ -79,8 +79,8 @@ Delivery: This is in the form of this github repository as well as a presentatio
 ### Steps to Reproduce
 
 1. You will need an env.py file that contains the hostname, username and password of the mySQL database that contains the telco_churn table. Store that env file locally in the repository. 
-2. Clone my repository (including the acquire.py, prepare.py, and model.py). Confirm .gitignore is hiding your env.py file/
-3. Libaries used are pandas, matplotlib, scipy, sklearn, seaborn, and numpy.
+2. Clone my repository (including the acquire.py, prepare.py, and model.py). Confirm .gitignore is hiding your env.py file.
+3. Libraries used are pandas, matplotlib, scipy, sklearn, seaborn, and numpy.
 4. You should be able to run churn_report.ipynb.
 
 ### Key Findings and Recommendations
@@ -91,7 +91,7 @@ Delivery: This is in the form of this github repository as well as a presentatio
 - For month to month plan partipants, those who churn pay more on average than those who stay. This implies cost may be a driver of churn for these customers -> recommend examining options for discounting this service
 - For internet service customers, fiber customers churn on average 10% more than we'd expect -> recommend examining how this service quality differs from DSL and looking into ways to improve it.
 - For fiber customers, those with streaming churn at a lower rate than those who don't have streaming. Still - churn rates for both streamers and non-streamers are above the overall average. Recommend promoting streaming to fiber customers. 
-- Of the four classification algorithms evaluated to predict churn, each with a variety of hyperparameter settings for a total of 311 models, k-nearest neighbors with a k value of 87 demonstrated the best performance overall. Tested this model on the test set resulted in an accuracy of 79% - an improvement of 6% from the baseline. I recommend using this model to target customers deemed more likely to churn with offers or promotions.
+- Of the four classification algorithms evaluated to predict churn, each with a variety of hyperparameter settings for a total of 311 models, k-nearest neighbors with a k value of 87 demonstrated the best performance overall. Testing this model on the test set resulted in an accuracy of 79% - an improvement of 6% from the baseline. I recommend using this model to target customers deemed more likely to churn with offers or promotions.
 
 ### Future work
 
